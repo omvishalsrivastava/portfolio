@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Om Vishal Srivastava — Aerospace Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+<style>
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --surface-2: #f5f5f5;
+  --ink: #0d0d0d;
+  --ink-2: #404040;
+  --ink-3: #909090;
+  --ink-4: #d4d4d4;
+  --cyan: #00b8d9;
+  --cyan-dim: rgba(0,184,217,0.08);
+  --cyan-border: rgba(0,184,217,0.28);
+  --radius: 10px;
+  --radius-sm: 6px;
+  --ff: 'Inter', system-ui, sans-serif;
+  --fm: 'JetBrains Mono', monospace;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+
+body {
+  font-family: var(--ff);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), rgba(0,184,217,.3), transparent);
+  z-index: 9999;
+}
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 2.5rem; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 3px; z-index: 100;
+  background: rgba(250,250,250,0.94);
+  border-bottom: 1px solid var(--ink-4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.nav-inner {
+  max-width: 960px; margin: 0 auto; padding: 0 2.5rem;
+  display: flex; align-items: center; justify-content: space-between; height: 52px;
+}
+.nav-logo {
+  font-family: var(--fm); font-size: 11px; font-weight: 500;
+  letter-spacing: .16em; color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--cyan);
+  animation: blink 2.4s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: var(--fm); font-size: 11px; letter-spacing: .08em;
+  color: var(--ink-3); text-decoration: none; text-transform: uppercase;
+  transition: color .15s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+  height: 1.5px; background: var(--cyan);
+  transform: scaleX(0); transition: transform .2s var(--ease);
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 92vh; display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; border-bottom: 1px solid var(--ink-4);
+}
+#hero .wrap {
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 0; min-height: 92vh;
+}
+.hero-left {
+  padding: 6rem 3.5rem 6rem 0;
+  border-right: 1px solid var(--ink-4);
+}
+.hero-eyebrow {
+  font-family: var(--fm); font-size: 10px; letter-spacing: .2em;
+  color: var(--cyan); text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 2rem;
+}
+.hero-eyebrow::before { content:''; width:20px; height:1px; background:var(--cyan); }
+.hero-name {
+  font-size: clamp(2.8rem,5vw,4.2rem); font-weight: 300;
+  letter-spacing: -.03em; line-height: 1.0; margin-bottom: 8px; color: var(--ink);
+}
+.hero-name em { font-style: italic; color: var(--cyan); }
+.hero-role { font-size: 14px; color: var(--ink-2); margin-bottom: 1.5rem; font-weight: 400; }
+.hero-mission {
+  font-size: 13px; color: var(--ink-3); line-height: 1.85;
+  max-width: 340px; margin-bottom: 2.5rem;
+}
+.hero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-right { padding: 6rem 0 6rem 3.5rem; display: flex; flex-direction: column; gap: 24px; }
+.hero-quote {
+  border-left: 2px solid var(--cyan);
+  padding: 16px 20px;
+  background: var(--cyan-dim);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 13px; color: var(--ink-2); line-height: 1.8; font-style: italic;
+}
+.hero-quote strong { font-style: normal; color: var(--ink); font-weight: 500; }
+.stat-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--ink-4); border-radius: var(--radius); overflow: hidden;
+}
+.stat-cell {
+  padding: 18px 20px; border-right: 1px solid var(--ink-4); border-bottom: 1px solid var(--ink-4);
+  transition: background .15s;
+}
+.stat-cell:hover { background: var(--cyan-dim); }
+.stat-cell:nth-child(2n) { border-right: none; }
+.stat-cell:nth-child(3), .stat-cell:nth-child(4) { border-bottom: none; }
+.stat-num { font-size: 24px; font-weight: 500; color: var(--ink); letter-spacing: -.02em; line-height: 1; margin-bottom: 4px; }
+.stat-lbl { font-family: var(--fm); font-size: 9px; letter-spacing: .12em; color: var(--ink-3); text-transform: uppercase; }
+
+/* ── BUTTONS ── */
+.btn {
+  font-family: var(--fm); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  padding: 10px 20px; border-radius: var(--radius-sm); cursor: pointer;
+  transition: all .15s var(--ease); display: inline-flex; align-items: center;
+  gap: 6px; font-weight: 500; border: none; text-decoration: none;
+}
+.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary:hover { background: #1f1f1f; transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink-4); }
+.btn-ghost:hover { border-color: var(--ink); background: var(--surface-2); }
+.btn-cyan { background: var(--cyan-dim); color: var(--cyan); border: 1px solid var(--cyan-border); }
+.btn-cyan:hover { background: rgba(0,184,217,.16); }
+
+/* ── SECTIONS ── */
+section { padding: 6rem 0; }
+.section-label {
+  font-family: var(--fm); font-size: 10px; letter-spacing: .2em;
+  color: var(--cyan); text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+}
+.section-label::after { content:''; max-width:32px; flex:1; height:1px; background:var(--cyan-border); }
+.section-title {
+  font-size: clamp(1.8rem,3.5vw,2.5rem); font-weight: 400;
+  letter-spacing: -.02em; color: var(--ink); margin-bottom: 2.5rem; line-height: 1.1;
+}
+.divider { height: 1px; background: var(--ink-4); opacity: .5; }
+
+/* ── ABOUT ── */
+.about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 4rem; align-items: start; }
+.about-text p { font-size: 13px; color: var(--ink-2); line-height: 1.85; margin-bottom: 1rem; }
+.about-text p:last-child { margin-bottom: 0; }
+.about-stats { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--ink-4); border-radius: var(--radius); overflow: hidden; }
+.astat { padding: 16px 18px; border-bottom: 1px solid var(--ink-4); transition: background .15s; }
+.astat:last-child { border-bottom: none; }
+.astat:hover { background: var(--cyan-dim); }
+.astat-num { font-size: 22px; font-weight: 500; letter-spacing: -.02em; color: var(--ink); line-height: 1; margin-bottom: 3px; }
+.astat-lbl { font-family: var(--fm); font-size: 9px; letter-spacing: .12em; color: var(--ink-3); text-transform: uppercase; }
+
+/* ── TIMELINE ── */
+.tl-section-title { font-family: var(--fm); font-size: 10px; letter-spacing: .18em; color: var(--ink-3); text-transform: uppercase; margin: 3rem 0 1.25rem; display: flex; align-items: center; gap: 8px; }
+.tl-section-title::before { content:'→'; color: var(--cyan); }
+.timeline { display: flex; flex-direction: column; }
+.tl-item {
+  display: grid; grid-template-columns: 100px 1fr;
+  gap: 0 24px; padding: 20px 10px;
+  border-bottom: 1px solid var(--ink-4);
+  transition: background .15s, padding-left .15s; border-radius: var(--radius-sm);
+}
+.tl-item:last-child { border-bottom: none; }
+.tl-item:hover { background: var(--surface-2); padding-left: 16px; }
+.tl-date { font-family: var(--fm); font-size: 10px; color: var(--ink-3); padding-top: 2px; letter-spacing: .04em; }
+.tl-title { font-size: 13px; font-weight: 500; margin-bottom: 5px; }
+.tl-desc { font-size: 12px; color: var(--ink-3); line-height: 1.7; }
+.tl-tag { display: inline-block; font-family: var(--fm); font-size: 9px; padding: 2px 8px; border-radius: 4px; background: var(--cyan-dim); color: var(--cyan); border: 1px solid var(--cyan-border); margin-top: 8px; letter-spacing: .06em; }
+
+/* ── INTERESTS ── */
+.interests-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; border: 1px solid var(--ink-4); border-radius: var(--radius); overflow: hidden; margin-bottom: 2rem; }
+.interest-card { padding: 24px; border-right: 1px solid var(--ink-4); border-bottom: 1px solid var(--ink-4); transition: background .15s; }
+.interest-card:nth-child(3n) { border-right: none; }
+.interest-card:hover { background: var(--cyan-dim); }
+.interest-card .icon { font-size: 1.4rem; margin-bottom: 10px; display: block; }
+.interest-card h3 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; color: var(--ink); }
+.interest-card p { font-size: 12px; color: var(--ink-3); line-height: 1.65; }
+
+/* ── PROJECTS ── */
+.projects-grid { display: flex; flex-direction: column; gap: 0; }
+.project-card {
+  border: 1px solid var(--ink-4); border-bottom: none;
+  padding: 28px 32px; background: var(--surface);
+  transition: background .15s; position: relative; overflow: hidden;
+}
+.project-card:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+.project-card:last-child { border-bottom: 1px solid var(--ink-4); border-radius: 0 0 var(--radius) var(--radius); }
+.project-card::before {
+  content: ''; position: absolute; top: 0; left: 0; bottom: 0;
+  width: 3px; background: var(--cyan);
+  transform: scaleY(0); transform-origin: top;
+  transition: transform .25s var(--ease);
+}
+.project-card:hover { background: var(--cyan-dim); }
+.project-card:hover::before { transform: scaleY(1); }
+.project-card.featured::before { transform: scaleY(1); }
+.proj-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+.proj-name { font-size: 17px; font-weight: 500; letter-spacing: -.01em; }
+.proj-desc { font-size: 13px; color: var(--ink-3); line-height: 1.75; margin-bottom: 14px; }
+.tech-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill { font-family: var(--fm); font-size: 10px; padding: 3px 9px; border: 1px solid var(--ink-4); border-radius: 4px; color: var(--ink-3); transition: border-color .15s, color .15s; letter-spacing: .03em; cursor: default; }
+.pill:hover { border-color: var(--cyan-border); color: var(--cyan); }
+.badge { font-family: var(--fm); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; border: 1px solid currentColor; }
+.badge-active { color: var(--cyan); }
+.badge-done { color: #52b788; }
+.badge-wip { color: #e9c46a; }
+
+/* ── PAPERS ── */
+.paper-card {
+  border: 1px solid var(--ink-4); border-left: 3px solid var(--cyan);
+  border-radius: 0 var(--radius) var(--radius) 0; padding: 24px 28px;
+  margin-bottom: -1px; background: var(--surface);
+  transition: background .15s;
+}
+.paper-card:hover { background: var(--cyan-dim); }
+.paper-meta { font-family: var(--fm); font-size: 9px; letter-spacing: .16em; color: var(--cyan); text-transform: uppercase; margin-bottom: 8px; }
+.paper-title { font-size: 15px; font-weight: 500; line-height: 1.4; margin-bottom: 10px; letter-spacing: -.01em; }
+.paper-abstract { font-size: 12px; color: var(--ink-3); line-height: 1.75; margin-bottom: 16px; }
+.paper-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.paper-link { font-family: var(--fm); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--ink-4); padding: 6px 14px; border-radius: var(--radius-sm); cursor: pointer; background: none; transition: all .15s; display: inline-flex; align-items: center; gap: 5px; text-decoration: none; }
+.paper-link:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+/* ── SKILLS ── */
+.skills-group { margin-bottom: 2rem; }
+.skills-group-label { font-family: var(--fm); font-size: 10px; letter-spacing: .16em; color: var(--ink-3); text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.skills-group-label::before { content:'→'; color: var(--cyan); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--fm); font-size: 11px; padding: 6px 14px; border: 1px solid var(--ink-4); border-radius: var(--radius-sm); color: var(--ink-2); background: var(--surface); transition: all .15s var(--ease); cursor: default; letter-spacing: .02em; }
+.chip:hover { border-color: var(--cyan); color: var(--ink); background: var(--cyan-dim); transform: translateY(-1px); }
+.chip.highlight { border-color: var(--cyan-border); color: var(--cyan); background: var(--cyan-dim); }
+
+/* ── CONNECT ── */
+.connect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0; border: 1px solid var(--ink-4); border-radius: var(--radius); overflow: hidden; }
+.connect-card { display: flex; align-items: center; gap: 16px; padding: 20px 22px; border-right: 1px solid var(--ink-4); border-bottom: 1px solid var(--ink-4); text-decoration: none; color: var(--ink); transition: background .15s; }
+.connect-card:nth-child(2n) { border-right: none; }
+.connect-card:nth-child(3), .connect-card:nth-child(4) { border-bottom: none; }
+.connect-card:hover { background: var(--cyan-dim); }
+.connect-icon { width: 42px; height: 42px; border: 1px solid var(--ink-4); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; transition: border-color .15s; }
+.connect-card:hover .connect-icon { border-color: var(--cyan-border); }
+.connect-lbl { font-family: var(--fm); font-size: 9px; letter-spacing: .14em; color: var(--ink-3); text-transform: uppercase; margin-bottom: 4px; }
+.connect-val { font-family: var(--fm); font-size: 11px; font-weight: 500; word-break: break-all; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); padding: 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-brand { font-family: var(--fm); font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .1em; }
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a { font-family: var(--fm); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); text-decoration: none; transition: color .15s; }
+.footer-links a:hover { color: var(--cyan); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+.reveal { opacity:0; transform:translateY(20px); transition: opacity .55s ease, transform .55s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  #hero .wrap { grid-template-columns: 1fr; min-height: auto; padding-top: 4rem; padding-bottom: 4rem; }
+  .hero-left { padding: 0 0 2.5rem 0; border-right: none; border-bottom: 1px solid var(--ink-4); }
+  .hero-right { padding: 2.5rem 0 0 0; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero"><span class="nav-dot"></span>OVS.AE</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#papers">Research</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Class 12 · ICSE · Boards 2027 · India</div>
+      <h1 class="hero-name">Om <em>Vishal</em><br>Srivastava</h1>
+      <p class="hero-role">Aerospace Engineering Student &amp; Builder</p>
+      <p class="hero-mission">Studying propulsion systems, orbital mechanics, and mission architecture. Building tools that make the math tangible. Publishing what I learn.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#projects">See my work</a>
+        <a class="btn btn-ghost" href="#papers">Research ↓</a>
+        <a class="btn btn-cyan" href="https://github.com/omvishalsrivastava" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-quote">
+        "The most useful thing I can do right now is <strong>understand how things actually work</strong> — and build something that proves it."
+      </div>
+      <div class="stat-grid">
+        <div class="stat-cell"><div class="stat-num">98%</div><div class="stat-lbl">ICSE Class 10</div></div>
+        <div class="stat-cell"><div class="stat-num">2</div><div class="stat-lbl">Papers Published</div></div>
+        <div class="stat-cell"><div class="stat-num">3+</div><div class="stat-lbl">Projects Built</div></div>
+        <div class="stat-cell"><div class="stat-num">CS50</div><div class="stat-lbl">Harvard · Done</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <div class="wrap">
+    <div class="section-label">001 — About</div>
+    <div class="section-title">Background</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm Om, a Class 12 student on the ICSE board, appearing for my 2027 board examinations with a focus on Physics and Mathematics. My academic interest sits at the intersection of aerospace engineering, propulsion, and applied computing.</p>
+        <p>I've written independent technical papers on Nuclear Thermal Propulsion and crewed interplanetary mission architecture, and I'm building OpenMars — a mission-planning and propulsion-analysis tool — as a way to apply and test what I study.</p>
+        <p>I've completed CS50 (Harvard's intro to computer science) and am currently working through CS50P. I'm preparing for IOQM, NSEP, and NSEA olympiads, and broadly interested in propulsion systems, mission architecture, and the computational tools that underpin modern spacecraft design.</p>
+      </div>
+      <div class="about-stats">
+        <div class="astat"><div class="astat-num">98%</div><div class="astat-lbl">Class 10 ICSE Score</div></div>
+        <div class="astat"><div class="astat-num">2</div><div class="astat-lbl">Research Papers</div></div>
+        <div class="astat"><div class="astat-num">3+</div><div class="astat-lbl">Projects Built</div></div>
+        <div class="astat"><div class="astat-num">CS50P</div><div class="astat-lbl">Harvard Python · In Progress</div></div>
+      </div>
+    </div>
+
+    <div class="tl-section-title">Learning Journey</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2025–Now</div>
+        <div>
+          <div class="tl-title">OpenMars v0.1 — Active Development</div>
+          <div class="tl-desc">Building the core propulsion-comparison engine: delta-v modelling, mass-ratio analysis, and propellant estimation across Chemical, NTP, and NEP systems.</div>
+          <span class="tl-tag">Active</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2025</div>
+        <div>
+          <div class="tl-title">CS50P — Python Programming (Harvard)</div>
+          <div class="tl-desc">Harvard's dedicated Python programming course — file I/O, libraries, regular expressions, and unit testing patterns applicable to aerospace data-processing scripts.</div>
+          <span class="tl-tag">In Progress</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2024–25</div>
+        <div>
+          <div class="tl-title">Olympiad Preparation — IOQM / NSEP / NSEA</div>
+          <div class="tl-desc">Preparing for the Indian Olympiad Qualifier in Mathematics, National Standard Examination in Physics, and National Standard Examination in Astronomy.</div>
+          <span class="tl-tag">Preparing</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2024</div>
+        <div>
+          <div class="tl-title">CS50 — Intro to Computer Science (Harvard)</div>
+          <div class="tl-desc">Completed Harvard's flagship computer science course covering algorithms, data structures, C, Python, SQL, and web development fundamentals.</div>
+          <span class="tl-tag">Complete</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2024</div>
+        <div>
+          <div class="tl-title">Brighton &amp; Princeton Summer Programmes</div>
+          <div class="tl-desc">Participated in selective summer academic programmes, engaging with peers and instructors across disciplines in an international context.</div>
+          <span class="tl-tag">Complete</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects" class="reveal">
+  <div class="wrap">
+    <div class="section-label">002 — Projects</div>
+    <div class="section-title">What I've Built</div>
+    <div class="projects-grid">
+      <div class="project-card featured">
+        <div class="proj-top">
+          <span class="proj-name">OpenMars</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="badge badge-active">Active · v0.1</span>
+            <a class="btn btn-ghost" href="https://openmars.vercel.app" target="_blank" style="padding:6px 14px;font-size:10px;">View ↗</a>
+          </div>
+        </div>
+        <p class="proj-desc">A web-based mission-planning and propulsion-analysis platform for interplanetary mission design. Models performance trade-offs between Chemical, NTP, and NEP propulsion for Earth-to-Mars trajectories. Computes delta-v budgets, mass ratios, and propellant requirements using the Tsiolkovsky rocket equation.</p>
+        <div class="tech-pills">
+          <span class="pill">HTML/CSS</span><span class="pill">JavaScript</span><span class="pill">Chart.js</span>
+          <span class="pill">Rocket Equation</span><span class="pill">Delta-v Modelling</span><span class="pill">NTP/NEP</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="proj-top">
+          <span class="proj-name">StepCalc</span>
+          <span class="badge badge-done">Complete</span>
+        </div>
+        <p class="proj-desc">A web calculator that exposes the full evaluation sequence for each expression — not just the final answer, but each ordered step. Built as a study in mathematical transparency.</p>
+        <div class="tech-pills">
+          <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="proj-top">
+          <span class="proj-name">AI API Experiments</span>
+          <span class="badge badge-wip">Ongoing</span>
+        </div>
+        <p class="proj-desc">Small Python and web experiments integrating external AI APIs — exploring language models as components within larger engineering tools. Relevant to a planned AI mission-assistant module in OpenMars.</p>
+        <div class="tech-pills">
+          <span class="pill">Python</span><span class="pill">REST APIs</span><span class="pill">Web Dev</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESEARCH -->
+<section id="papers" class="reveal">
+  <div class="wrap">
+    <div class="section-label">003 — Research</div>
+    <div class="section-title">Independent Technical Writing</div>
+    <p style="font-size:13px;color:var(--ink-3);max-width:560px;margin-bottom:2rem;line-height:1.8;">Self-directed research exercises exploring aerospace engineering topics in depth. Not peer-reviewed academic publications — honest technical writing published on Zenodo.</p>
+
+    <div class="paper-card">
+      <div class="paper-meta">Paper 01 · Independent · Zenodo · 2025</div>
+      <div class="paper-title">Nuclear Propulsion for Deep Space Exploration: A Comparative Analysis of NTP and NEP Systems and Their Feasibility for Interplanetary Travel</div>
+      <p class="paper-abstract">Compares Nuclear Thermal Propulsion and Nuclear Electric Propulsion as alternatives to chemical rockets for deep-space exploration. Outlines how NTP offers higher thrust with moderate efficiency, while NEP provides extremely high efficiency but low thrust. Evaluates engineering, performance, and mission suitability — concluding NTP is better for crewed Mars missions, NEP for long-duration robotic exploration.</p>
+      <div class="paper-footer">
+        <div class="tech-pills">
+          <span class="pill">Nuclear Thermal Propulsion</span><span class="pill">Specific Impulse</span>
+          <span class="pill">Propulsion Trade Study</span><span class="pill">Deep-Space</span>
+        </div>
+        <a class="paper-link" href="https://zenodo.org/records/19651123" target="_blank">Read on Zenodo ↗</a>
+      </div>
+    </div>
+
+    <div class="paper-card" style="margin-top:12px;">
+      <div class="paper-meta">Paper 02 · Independent · Zenodo · 2025</div>
+      <div class="paper-title">Quantitative Mission Analysis and Engineering Design of Nuclear Thermal Propulsion for Crewed Mars Missions</div>
+      <p class="paper-abstract">The second paper in the series on advanced propulsion for deep space exploration. Extends the qualitative framework from Part 1 with quantitative modelling and mission-level design — delta-v budgeting, mass ratios, and EDL analysis for a crewed Mars architecture using NTP.</p>
+      <div class="paper-footer">
+        <div class="tech-pills">
+          <span class="pill">Mission Architecture</span><span class="pill">Delta-v Budgeting</span>
+          <span class="pill">Crewed Spaceflight</span><span class="pill">EDL Systems</span>
+        </div>
+        <a class="paper-link" href="https://zenodo.org/records/19821380" target="_blank">Read on Zenodo ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" class="reveal">
+  <div class="wrap">
+    <div class="section-label">004 — Skills</div>
+    <div class="section-title">Technical Toolkit</div>
+
+    <div class="skills-group">
+      <div class="skills-group-label">Programming</div>
+      <div class="chips">
+        <span class="chip highlight">Python</span>
+        <span class="chip">Java</span>
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">JavaScript</span>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <div class="skills-group-label">Aerospace &amp; Physics</div>
+      <div class="chips">
+        <span class="chip highlight">Tsiolkovsky Rocket Equation</span>
+        <span class="chip">Delta-v Budgeting</span>
+        <span class="chip">Propulsion Trade Studies</span>
+        <span class="chip">Mission Architecture</span>
+        <span class="chip">Orbital Mechanics</span>
+        <span class="chip">NTP / NEP Analysis</span>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <div class="skills-group-label">Courses &amp; Programmes</div>
+      <div class="chips">
+        <span class="chip highlight">CS50 — Harvard</span>
+        <span class="chip">CS50P — In Progress</span>
+        <span class="chip">Brighton Summer Programme</span>
+        <span class="chip">Princeton Summer Programme</span>
+        <span class="chip">IOQM · Preparing</span>
+        <span class="chip">NSEP · Preparing</span>
+        <span class="chip">NSEA · Preparing</span>
+        <span class="chip">SAT · Preparing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONNECT -->
+<section id="connect" class="reveal">
+  <div class="wrap">
+    <div class="section-label">005 — Connect</div>
+    <div class="section-title">Find Me Online</div>
+    <div class="connect-grid">
+      <a class="connect-card" href="https://github.com/omvishalsrivastava" target="_blank">
+        <div class="connect-icon"><i class="ti ti-brand-github" aria-hidden="true"></i></div>
+        <div><div class="connect-lbl">GitHub</div><div class="connect-val">omvishalsrivastava</div></div>
+      </a>
+      <a class="connect-card" href="https://openmars.vercel.app" target="_blank">
+        <div class="connect-icon"><i class="ti ti-satellite" aria-hidden="true"></i></div>
+        <div><div class="connect-lbl">Flagship Project</div><div class="connect-val">OpenMars</div></div>
+      </a>
+      <a class="connect-card" href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Srivastava%2C%20Om%22" target="_blank">
+        <div class="connect-icon"><i class="ti ti-file-text" aria-hidden="true"></i></div>
+        <div><div class="connect-lbl">Technical Writing</div><div class="connect-val">Zenodo</div></div>
+      </a>
+      <a class="connect-card" href="mailto:omvishalsrivastava@gmail.com">
+        <div class="connect-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
+        <div><div class="connect-lbl">Email</div><div class="connect-val">omvishalsrivastava@gmail.com</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">© 2025 Om Vishal Srivastava · OVS.AE</div>
+  <div class="footer-links">
+    <a href="https://github.com/omvishalsrivastava" target="_blank">GitHub</a>
+    <a href="#papers">Research</a>
+    <a href="#projects">Projects</a>
+    <a href="#connect">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
